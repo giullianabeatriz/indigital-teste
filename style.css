@@ -166,3 +166,170 @@ a:hover {
         width: 100vw;
     }
 }
+
+
+
+/* -------------------------
+   CORES e BASE (igual ao print)
+   ------------------------- */
+:root{
+  --sidebar-bg: #2f5970;    /* azul escuro lateral */
+  --navbar-bg: #163a4e;     /* topo */
+  --panel-bg: #e9f2f8;      /* painel claro atrás dos cards */
+  --card-blue: #2f6f8b;     /* cor da tabela/card */
+  --box-blue: #4a90d6;      /* azul dos boxes */
+  --box-light: #6aa8d6;     /* azul mais claro */
+  --muted: #4a6b7a;
+}
+
+/* Body background - deixar branco central, borda externa escura */
+body {
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Navbar */
+.main-header.navbar {
+  background: var(--navbar-bg) !important;
+  height: 56px;
+  padding: 0 1rem;
+}
+
+/* Brand (sidebar top) */
+.brand-link {
+  background: var(--sidebar-bg);
+  color: #fff !important;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+}
+
+/* Sidebar color & width */
+.main-sidebar {
+  background: var(--sidebar-bg);
+  width: 220px;
+}
+.main-sidebar .sidebar {
+  padding-top: 0.5rem;
+}
+.main-sidebar .nav-sidebar .nav-link {
+  color: rgba(255,255,255,0.9);
+}
+.main-sidebar .nav-sidebar .nav-item > .nav-link.active {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+.main-sidebar .nav-header {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Make sure content sits to the right of the sidebar (AdminLTE also handles this, but enforce to match proportions) */
+.content-wrapper {
+  margin-left: 220px;
+}
+
+/* Summary panel wrapper (fundo cinza claro com borda arredondada igual ao print) */
+.summary-panel {
+  background: var(--panel-bg);
+  border-radius: 8px;
+  box-shadow: none;
+  border: none;
+  padding: 0.65rem;
+}
+
+/* Boxes inside the summary panel */
+.summary-box {
+  background: #d9e6ee;
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* different color variants to match print */
+.summary-box--blue { background: var(--box-blue); color: #fff; }
+.summary-box--lightblue { background: var(--box-light); color: #fff; }
+.summary-box--muted { background: var(--muted); color: #fff; }
+
+/* label + value */
+.summary-label {
+  font-size: 0.85rem;
+  opacity: 0.95;
+  font-weight: 600;
+}
+.summary-value {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  font-weight: 600;
+}
+
+/* Tabela - card azul como no print */
+.reservas-card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+}
+
+/* header do card */
+.reservas-card .card-header {
+  background: var(--card-blue);
+  color: #fff;
+  border-bottom: none;
+  padding: 0.6rem 1rem;
+}
+
+/* conteúdo da tabela (área azul mais clara) */
+.reservas-card .table thead {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.reservas-card .table thead th {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.reservas-card .table tbody tr td {
+  border-top: 0;
+  color: #fff;
+  opacity: 0.95;
+  padding: 0.6rem;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* tornar o body do card com tom intermediário */
+.reservas-card .card-body {
+  background: var(--card-blue);
+  padding: 0;
+}
+
+/* footer com tom mais claro */
+.reservas-card .card-footer {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  padding: 0.7rem;
+}
+
+/* responsividade: quando a tela for pequena, ajustar margin-left (sidebar colapsa via AdminLTE) */
+@media (max-width: 767.98px) {
+  .content-wrapper {
+    margin-left: 0;
+  }
+  .main-sidebar {
+    width: 0;
+  }
+}
+
+/* pequenos ajustes visuais */
+.table td, .table th { vertical-align: middle; }
+
+
+

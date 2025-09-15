@@ -2,7 +2,7 @@
 <html lang="pt-BR">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>InDigital</title>
+    <title>InDigital - Administração</title>
     
     <!-- CSS via CDN - ORDEM IMPORTANTE -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,6 +27,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     
     <style>
+      :root {
+        --cor-primaria: #20597F;
+        --cor-secundaria: #20597F;
+        --cor-intermediaria1: #20597F;
+        --cor-intermediaria2: #86B5E1;
+        --cor-intermediaria3: #20597F;
+      }
+      
       /* Estilos personalizados para melhorar a aparência */
       body {
         font-family: 'Source Sans 3', sans-serif;
@@ -61,20 +69,21 @@
         font-weight: 600;
       }
       .app-sidebar {
-        background: linear-gradient(180deg, #3A7098 0%, #3A7098 100%) !important;
+        background: linear-gradient(180deg, var(--cor-primaria) 0%, var(--cor-primaria) 100%) !important;
       }
       .sidebar-brand .brand-text {
         font-weight: 700;
         font-size: 1.5rem;
         color: #fff;
-    }
-    
+      }
+      
       .app-footer {
         background-color: #f8f9fa;
         border-top: 1px solid #dee2e6;
         padding: 10px 0;
         text-align: center;
       }
+      
       /* Correção para o layout do AdminLTE */
       .wrapper {
         display: flex;
@@ -101,6 +110,118 @@
       .sidebar-collapsed .main-sidebar {
         width: 78px;
       }
+      
+      /* Estilos para o banner de boas-vindas */
+      .welcome-banner {
+        background: linear-gradient(120deg, var(--cor-primaria), var(--cor-intermediaria2));
+        color: white;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      .welcome-banner::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 120px;
+        height: 120px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+      }
+      .welcome-banner::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 150px;
+        height: 150px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+      }
+      .welcome-banner h1 {
+        font-weight: 700;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .welcome-banner p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+      .welcome-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 3.5rem;
+        opacity: 0.2;
+        z-index: 0;
+      }
+      
+      /* Melhorias no menu lateral */
+      .nav-sidebar > .nav-item > .nav-link {
+        margin: 5px 10px;
+        border-radius: 5px;
+      }
+      .nav-sidebar > .nav-item > .nav-link.active {
+        background-color: rgba(255,255,255,0.1);
+      }
+      .nav-sidebar .nav-header {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        margin-top: 15px;
+        color: #6c757d;
+      }
+      
+      /* Aplicando as cores padrão nos elementos */
+      .bg-info {
+        background-color: var(--cor-primaria) !important;
+        color: white !important;
+      }
+      
+      .bg-success {
+        background-color: var(--cor-intermediaria2) !important;
+        color: white !important;
+      }
+      
+      .bg-warning {
+        background-color: var(--cor-intermediaria1) !important;
+        color: white !important;
+      }
+      
+      .bg-danger {
+        background-color: var(--cor-intermediaria3) !important;
+        color: white !important;
+      }
+      
+      .main-header .navbar-nav .nav-link {
+        color: var(--cor-primaria);
+      }
+      
+      .main-header .navbar-nav .nav-link:hover {
+        color: var(--cor-intermediaria2);
+      }
+      
+      .breadcrumb-item.active {
+        color: var(--cor-primaria);
+      }
+      
+      .pagination .page-item.active .page-link {
+        background-color: var(--cor-primaria);
+        border-color: var(--cor-primaria);
+      }
+      
+      .pagination .page-link {
+        color: var(--cor-primaria);
+      }
+      
       @media (max-width: 767.98px) {
         .content-wrapper {
           margin-left: 0;
@@ -115,6 +236,12 @@
         .sidebar-collapsed .main-sidebar {
           width: 250px;
           transform: translateX(-250px);
+        }
+        .welcome-banner {
+          text-align: center;
+        }
+        .welcome-icon {
+          display: none;
         }
       }
     </style>
@@ -132,7 +259,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <span class="d-none d-md-inline">Olá, Admin</span>
+              <span class="d-none d-md-inline">Olá, Admin!</span>
             </a>
             </ul>
         </li>
@@ -161,32 +288,32 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-calendar-check"></i>
-                  <p>GERENCIAR RESERVAS</p>
+                  <p>Gerenciar Reservas</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
-                  <p>GERENCIAR MONITORES</p>
+                  <p>Gerenciar Monitores</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-clock"></i>
-                  <p>GERENCIAR FILA DE ESPERA</p>
+                  <i class="nav-icon fas fa-hourglass-half"></i>
+                  <p>Gerenciar Fila de Espera</p>
                 </a>
               </li>
               <li class="nav-header">USUÁRIO</li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
-                  <p>PERFIL</p>
+                  <p>Perfil</p>
                 </a>
               </li>    
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
-                  <p>SAIR</p>
+                  <p>Sair</p>
                 </a>
               </li>
             </ul>
@@ -211,6 +338,13 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
+            <!-- Banner de boas-vindas -->
+            <div class="welcome-banner">
+              <h1>Painel Administrativo</h1>
+              <p>Gerencie usuários, reservas e monitores do sistema</p>
+              <i class="fas fa-cogs welcome-icon"></i>
+            </div>
+            
             <!-- Small boxes (Stat box) -->
             <div class="row">
               <div class="col-lg-3 col-6">
@@ -218,9 +352,6 @@
                   <div class="inner">
                     <h3>4</h3>
                     <p>USUÁRIOS</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
                   </div>
                 </div>
               </div>
@@ -231,9 +362,6 @@
                     <h3>5</h3>
                     <p>DISPONIBILIDADES</p>
                   </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
                 </div>
               </div>
               <!-- ./col -->
@@ -242,9 +370,6 @@
                   <div class="inner">
                     <h3>2</h3>
                     <p>MONITORES</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
                   </div>
                 </div>
               </div>
@@ -255,8 +380,6 @@
                     <h3>0</h3>
                     <p>FILA DE ESPERA</p>
                   </div>
-                  <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
                   </div>
                 </div>
               </div>
@@ -349,5 +472,3 @@
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"></script>
     <!-- AdminLTE App -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <script>
-      
